@@ -8,7 +8,8 @@ public class TestDataprovider {
     @DataProvider
     public Object[][] createNewUser() throws Exception{
 
-        Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty("user.dir")+"/src/test/resources/testdata/TestData.xlsx","NewUser");
+        Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty("user.dir")
+                +"/src/test/resources/testdata/TestData.xlsx","NewUser");
 
         return (testObjArray);
 
@@ -18,7 +19,8 @@ public class TestDataprovider {
     @DataProvider
     public Object[][] newMessage() throws Exception{
 
-        Object[][] testObjArray = ExcelUtils.getTableArray("D://ToolsQA//OnlineStore//src//testData//TestData.xlsx","Sheet1");
+        Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty("user.dir")
+                +"/src/test/resources/testdata/TestData.xlsx","NewMessage");
 
         return (testObjArray);
 

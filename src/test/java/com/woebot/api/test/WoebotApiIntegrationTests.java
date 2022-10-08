@@ -32,7 +32,8 @@ public class WoebotApiIntegrationTests  extends BaseTest{
 
     @Test(priority=1,dataProvider = "createNewUser", dataProviderClass = TestDataprovider.class)
     public void verifyNewUserApi(ITestContext testContext, String testDescription,
-                                 String apiRequestBody,String expectedStatusCode){
+                                 String apiRequestBody,
+                                 String expectedResponse,String expectedStatusCode){
 
         Map<String,Object> queryParams = new HashMap<>();
         Request apiRequest = buildApiRequest(queryParams,"/user/new",
@@ -42,8 +43,12 @@ public class WoebotApiIntegrationTests  extends BaseTest{
 
             Response response =requestExecutor.executeRequest(apiRequest);
             testContext = getITestContextAttributes(testContext,testDescription,apiRequest,response);
+
             assertThat("Status code match:",response.getStatusCode(),
                     is(equalTo(Integer.valueOf(expectedStatusCode))));
+
+            assertThat("Response match:",response.getBody().toString(),
+                    is(equalTo(expectedResponse)));
 
         }catch (Exception e){
             e.printStackTrace();
@@ -52,24 +57,30 @@ public class WoebotApiIntegrationTests  extends BaseTest{
 
     }
 
-//    @Test(priority=2,dataProvider = "newMessage", dataProviderClass = TestDataprovider.class)
-//    public void verifyNewMessageApi(ITestContext testContext, String testDescription,
-//                                 String apiRequestBody,String expectedStatusCode){
-//
-//        Map<String,Object> queryParams = new HashMap<>();
-//        Request apiRequest = buildApiRequest(queryParams,"/message/new",
-//                "post",apiRequestBody);
-//
-//        try{
-//
-//            Response response =requestExecutor.executeRequest(apiRequest);
-//            testContext = getITestContextAttributes(testContext,testDescription,apiRequest,response);
-//            assertThat("Status code match:",response.getStatusCode(),
-//                    is(equalTo(Integer.valueOf(expectedStatusCode))));
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
+    @Test(priority=2,dataProvider = "newMessage", dataProviderClass = TestDataprovider.class)
+    public void verifyNewMessageApi(ITestContext testContext, String testDescription,
+                                 String apiRequestBody,
+                                    String expectedResponse,String expectedStatusCode){
+
+        Map<String,Object> queryParams = new HashMap<>();
+        Request apiRequest = buildApiRequest(queryParams,"/message/new",
+                "post",apiRequestBody);
+
+        try{
+
+            Response response =requestExecutor.executeRequest(apiRequest);
+            testContext = getITestContextAttributes(testContext,testDescription,apiRequest,response);
+
+            assertThat("Status code match:",response.getStatusCode(),
+                    is(equalTo(Integer.valueOf(expectedStatusCode))));
+
+            assertThat("Response match:",response.getBody().toString(),
+                    is(equalTo(expectedResponse)));
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }
