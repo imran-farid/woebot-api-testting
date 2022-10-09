@@ -19,7 +19,7 @@ mvn clean test
 
 Import the generated project into your IDE.
 
-Open the project in your IDE and run the tests contained in one of the aforementioned test classes as you would a testNg test.
+Open the project in your IDE and run the tests
 
 ```
 
