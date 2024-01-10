@@ -3,7 +3,7 @@ api test automation assessmentt
 
 ## Installation
  ```
-* git clone project : git@github.com:mayank-kapoor/api-test-demo.git
+* git@github.com:imran-farid/woebot-api-testting.git
 
 * cd woebot-api-testting
 
