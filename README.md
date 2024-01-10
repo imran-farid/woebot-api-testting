@@ -1,5 +1,5 @@
-# woebot-api-testting
-woebot api test automation assessmentt
+# api-testing
+api test automation assessmentt
 
 ## Installation
  ```
